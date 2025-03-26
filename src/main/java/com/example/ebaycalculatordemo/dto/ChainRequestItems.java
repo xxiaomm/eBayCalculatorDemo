@@ -14,6 +14,6 @@ import java.math.BigDecimal;
 @Data
 public class ChainRequestItems {
 //    @NotNull
-    BigDecimal num;
+    Object num;
     Operation op;
 }

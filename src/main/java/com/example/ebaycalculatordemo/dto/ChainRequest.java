@@ -16,7 +16,7 @@ import java.util.List;
 @Data
 public class ChainRequest {
 //    @NotNull
-    BigDecimal initialValue;
+    Object initialValue;
     List<ChainRequestItems> items;
 
 

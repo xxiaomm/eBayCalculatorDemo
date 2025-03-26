@@ -7,6 +7,7 @@ import com.example.ebaycalculatordemo.entity.Calculator;
 import com.example.ebaycalculatordemo.enums.Operation;
 import com.example.ebaycalculatordemo.service.CalculatorService;
 import com.example.ebaycalculatordemo.stratergy.OperationStrategy;
+import com.example.ebaycalculatordemo.utils.NumberConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,7 @@ public class CalculatorServiceImpl implements CalculatorService {
 
     private final Calculator calculator;
 
+
     public CalculatorServiceImpl(Map<String, OperationStrategy> strategyBeans) {
         Map<Operation, OperationStrategy> strategyMap = new EnumMap<>(Operation.class);
         for (OperationStrategy strategy : strategyBeans.values()) {
@@ -34,15 +36,20 @@ public class CalculatorServiceImpl implements CalculatorService {
     }
     @Override
     public BigDecimal calculate(CalculateRequest request) {
-        return calculator.calculate(request.getOp(), request.getNum1(), request.getNum2());
+        BigDecimal a = NumberConverter.toBigDecimal(request.getNum1());
+        BigDecimal b = NumberConverter.toBigDecimal(request.getNum2());
+        return calculator.calculate(request.getOp(), a, b);
     }
 
     @Override
     public BigDecimal calculateChained(ChainRequest chainRequest) {
-        BigDecimal result = chainRequest.getInitialValue() != null ? chainRequest.getInitialValue() : BigDecimal.ZERO;
+        BigDecimal result = chainRequest.getInitialValue() != null
+            ? NumberConverter.toBigDecimal(chainRequest.getInitialValue())
+            : BigDecimal.ZERO;
 
         for (ChainRequestItems item : chainRequest.getItems()) {
-            result = calculator.calculate(item.getOp(), result, item.getNum());
+            BigDecimal num = NumberConverter.toBigDecimal(item.getNum());
+            result = calculator.calculate(item.getOp(), result, num);
         }
         return result;
     }

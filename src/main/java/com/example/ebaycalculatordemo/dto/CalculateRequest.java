@@ -3,8 +3,6 @@ package com.example.ebaycalculatordemo.dto;
 import com.example.ebaycalculatordemo.enums.Operation;
 import lombok.Data;
 
-import java.math.BigDecimal;
-
 /**
  * @Create 03/2025
  * @Author xiao
@@ -16,8 +14,8 @@ public class CalculateRequest {
 
     private Operation op;
 //    @NotNull
-    private BigDecimal num1;
+    private Object num1;
 //    @NotNull
-    private BigDecimal num2;
+    private Object num2;
 
 }
