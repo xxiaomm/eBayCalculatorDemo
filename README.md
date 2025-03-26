@@ -1,5 +1,6 @@
 # Implement a Flexible Calculator
 
+
 ## Features
 
 - Operations: Define an enum named Operation that includes basic operations
@@ -22,6 +23,7 @@ like ADD, SUBTRACT, MULTIPLY, and DIVIDE.
 ## Environment
 - Java
 - SpringBoot
+- Junit
 
 ## Design Pattern
 
@@ -205,3 +207,16 @@ output:
    "data": null
 }
 ```
+
+
+## Unit Test
+
+#### CalculatorTest
+
+![img.png](img/CalculatorTest.png)
+
+#### CalculatorServiceImplTest
+![img.png](img/CalculatorServiceImplTest.png)
+
+#### NumberConverterTest
+![img.png](img/NumberConverterTest.png)

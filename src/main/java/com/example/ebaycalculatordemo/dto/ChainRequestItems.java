@@ -17,7 +17,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChainRequestItems {
-//    @NotNull
-    Object num;
     Operation op;
+    Object num;
+
 }
