@@ -1,7 +1,9 @@
 package com.example.ebaycalculatordemo.dto;
 
 import com.example.ebaycalculatordemo.enums.Operation;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 //import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
@@ -12,6 +14,8 @@ import java.math.BigDecimal;
  * @Description
  */
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChainRequestItems {
 //    @NotNull
     Object num;

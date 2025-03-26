@@ -3,6 +3,7 @@ package com.example.ebaycalculatordemo.controller;
 import com.example.ebaycalculatordemo.dto.CalculateRequest;
 import com.example.ebaycalculatordemo.dto.ChainRequest;
 import com.example.ebaycalculatordemo.dto.ChainRequestItems;
+import com.example.ebaycalculatordemo.dto.Response;
 import com.example.ebaycalculatordemo.enums.Operation;
 import com.example.ebaycalculatordemo.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,18 +31,14 @@ public class CalculatorController {
 
 
     @PostMapping("/basic")
-    public ResponseEntity<BigDecimal> calculateBasic(
-//        @Valid
-        @RequestBody CalculateRequest calculateRequest) {
-
-
-        return ResponseEntity.ok(calculatorService.calculate(calculateRequest));
+    public Response calculateBasic(@RequestBody CalculateRequest calculateRequest) {
+        BigDecimal result = calculatorService.calculate(calculateRequest);
+        return Response.success(result);
     }
 
     @PostMapping("/chain")
-    public ResponseEntity<BigDecimal> calculateChain(@RequestBody ChainRequest chainRequest) {
-
-
-        return ResponseEntity.ok(calculatorService.calculateChained(chainRequest));
+    public Response calculateChain(@RequestBody ChainRequest chainRequest) {
+        BigDecimal result = calculatorService.calculateChained(chainRequest);
+        return Response.success(result);
     }
 }
